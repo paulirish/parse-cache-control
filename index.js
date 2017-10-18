@@ -30,11 +30,11 @@ module.exports = function parseCacheControl(field) {
     .filter(function (key) { return header[key]; })
     .forEach(function (key) {
       try {
-        var maxAge = parseInt(header[key], 10);
-        if (isNaN(maxAge)) {
+        var headerValue = parseInt(header[key], 10);
+        if (isNaN(headerValue)) {
           err = 'Cache-Control['+key+'] parsed but is not a number';
         }
-        header[key] = maxAge;
+        header[key] = headerValue;
       } catch (e) {
         err = 'Cache-Control['+key+'] not parseable';
       }
